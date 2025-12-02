@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cadia - An AI-first mobile app that transforms how you maintain relationships through voice-to-memory magic.">
+    <meta name="keywords" content="Cadia, relationships, AI, voice, memory, contacts, CRM, personal">
+    <meta property="og:title" content="Cadia - Remember What Matters">
+    <meta property="og:description" content="An AI-first mobile app that transforms how you maintain relationships.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://cadia.one">
+    <title>Cadia - Remember What Matters</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #6366f1;
+            --primary-dark: #4f46e5;
+            --secondary-color: #8b5cf6;
+            --text-color: #1f2937;
+            --text-light: #6b7280;
+            --background: #ffffff;
+            --background-alt: #f9fafb;
+            --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header */
+        header {
+            padding: 20px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 100;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            letter-spacing: -0.02em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-light);
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .cta-button {
+            background: var(--accent-gradient);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(99, 102, 241, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            background: linear-gradient(180deg, #f8faff 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            letter-spacing: -0.03em;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .secondary-button {
+            background: white;
+            color: var(--primary-color);
+            padding: 12px 24px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid var(--primary-color);
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            background: var(--primary-color);
+            color: white;
+        }
+
+        /* Features Section */
+        .features {
+            padding: 100px 0;
+            background: var(--background-alt);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto 60px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 32px;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--accent-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .feature-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .feature-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* How It Works Section */
+        .how-it-works {
+            padding: 100px 0;
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 48px;
+            height: 48px;
+            background: var(--accent-gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .step-content p {
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            background: var(--accent-gradient);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.125rem;
+            margin-bottom: 32px;
+        }
+
+        .cta-section .cta-button {
+            background: white;
+            color: var(--primary-color);
+        }
+
+        .cta-section .cta-button:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 0 40px;
+            background: var(--text-color);
+            color: white;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 24px;
+        }
+
+        .footer-logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.875rem;
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .mobile-menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 70px;
+            left: 0;
+            right: 0;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+        }
+
+        .mobile-nav.active {
+            display: block;
+        }
+
+        .mobile-nav ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .mobile-nav a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 8px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-toggle {
+                display: flex;
+            }
+
+            .header-content .cta-button {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <a href="/" class="logo">Cadia</a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                </ul>
+            </nav>
+            <a href="#get-started" class="cta-button">Get Early Access</a>
+            <button class="mobile-menu-toggle" aria-label="Toggle menu" onclick="toggleMobileMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobileNav">
+        <ul>
+            <li><a href="#features" onclick="closeMobileMenu()">Features</a></li>
+            <li><a href="#how-it-works" onclick="closeMobileMenu()">How It Works</a></li>
+            <li><a href="#get-started" onclick="closeMobileMenu()">Get Early Access</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Remember What Matters</h1>
+                <p>Cadia is an AI-first mobile app that transforms how you maintain relationships—from capturing moments with your voice to surfacing what matters most.</p>
+                <div class="hero-buttons">
+                    <a href="#get-started" class="cta-button">Get Early Access</a>
+                    <a href="#features" class="secondary-button">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="features" id="features">
+            <div class="container">
+                <h2 class="section-title">Built for Real Relationships</h2>
+                <p class="section-subtitle">Everything you need to nurture the connections that matter most in your life.</p>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎙️</div>
+                        <h3>Voice-to-Memory Magic</h3>
+                        <p>Capture relationship details naturally with your voice. Just talk, and Cadia transforms your words into organized, searchable memories.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>Spaces</h3>
+                        <p>Organize your relationships into structured profiles. Every detail, conversation, and memory in one beautiful place.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💡</div>
+                        <h3>Pulse Feed</h3>
+                        <p>Never miss what matters. Your personalized feed surfaces important moments, reminders, and insights about your relationships.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔍</div>
+                        <h3>Semantic Search</h3>
+                        <p>Find anything instantly. Search naturally—like asking a friend—and get exactly what you're looking for.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">⚡</div>
+                        <h3>Fast Logging</h3>
+                        <p>Log moments in seconds. Quick capture means you'll actually use it, building a rich history over time.</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI-Powered Insights</h3>
+                        <p>Let AI help you be more thoughtful. Get suggestions, reminders, and insights that strengthen your connections.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="how-it-works" id="how-it-works">
+            <div class="container">
+                <h2 class="section-title">How It Works</h2>
+                <p class="section-subtitle">Three simple steps to never forget what matters about the people in your life.</p>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Capture with Voice or Text</h3>
+                            <p>After a conversation or meeting, simply speak or type what you want to remember. Cadia's AI understands context and organizes it automatically.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Organized into Spaces</h3>
+                            <p>Your memories are automatically organized into Spaces—personal profiles for each person in your life with all their details, preferences, and your shared history.</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Surface What Matters</h3>
+                            <p>Before your next interaction, Cadia surfaces relevant details through the Pulse feed and semantic search—helping you show up as your most thoughtful self.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section" id="get-started">
+            <div class="container">
+                <h2>Ready to Transform Your Relationships?</h2>
+                <p>Join the waitlist and be among the first to experience the future of relationship management.</p>
+                <a href="mailto:hello@cadia.one" class="cta-button">Get Early Access</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">Cadia</div>
+                <ul class="footer-links">
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#how-it-works">How It Works</a></li>
+                    <li><a href="mailto:hello@cadia.one">Contact</a></li>
+                </ul>
+            </div>
+            <p class="copyright">&copy; 2024 Cadia. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.toggle('active');
+        }
+
+        function closeMobileMenu() {
+            const mobileNav = document.getElementById('mobileNav');
+            mobileNav.classList.remove('active');
+        }
+    </script>
+</body>
+</html>
